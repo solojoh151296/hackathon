@@ -78,7 +78,7 @@
     <!-- Card de resultados -->
     <b-col  md="4" style="padding:0px">
       <b-card       
-          
+          id="card1"
           tag="article"
           style="max-width: 35rem;padding:0px;padding-rigth:10px"
           class="mb-2"
@@ -219,6 +219,7 @@
           this.clearTimeout()
           callback()
         }, 5000)
+        // document.write("<div><a id='card1'/>jeje</div>");
       },
       onHidden() {
         // Return focus to the button once hidden
@@ -229,7 +230,9 @@
         // Simulate an async request
         this.setTimeout(() => {
           this.busy = false
+          document.write("<div><a id='card1'/>jeje</div>");
         })
+        
       },
 
       // funciones del cargando
