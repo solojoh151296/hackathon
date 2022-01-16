@@ -51,7 +51,7 @@
           </b-col> 
       </b-row>
       
-        <b-link href="#foo">Link</b-link>
+        <b-link href="resultado">Link</b-link>
 
         <!-- Template del Cargando   --> 
         <template #overlay>
@@ -77,7 +77,7 @@
   
   export default {
 
-    
+    name:'welcome',
     data() {
       return {
         busy: false,

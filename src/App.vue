@@ -5,23 +5,50 @@
     <!-- <XD/>
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!--  -->
-    <Welcome/>
-    
+    <Welcome/> 
+     <!-- <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link> -->
+    <!-- <router-link to="/about" >   About   </router-link>
+    <router-link to="/" >   Home   </router-link>
+    <router-view></router-view>
+
+
+    <div >
+      <router-view/>
+    </div> -->
+
+
+
+
+
+
+
+
   </div>
+  
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import XD from './components/XD.vue'
 import Welcome from './components/Welcome1.vue'
+
+
+
 export default {
   name: 'App',
   components: {
     // HelloWorld,
     // XD,
     Welcome
-  }
+  },
+   
+ 
 }
+
+
+
+
 </script>
 
 <style>
@@ -34,4 +61,5 @@ export default {
   margin-top: 60px;
   background-color: white;/*  #color fondo */
 }
+
 </style>
