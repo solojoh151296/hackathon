@@ -69,8 +69,8 @@
       <h1 style="font-family:verdana;color:white; margin-top:20px;margin-bottom:20px; " > Resultados de {{this.datosPersonales1.name}} </h1>
     </div>
     <!-- Card de resultados -->
-    <b-col  md="4" sm="12" xs="12" lg="4" v-if=" this.datosPersonales1.name">
-      <b-row>
+    <b-col  v-if=" this.datosPersonales1.name">
+      
             <b-card       
                 id="card1"
                 tag="article"
@@ -84,36 +84,27 @@
                 <h4 style="color:black;padding:15px" >{{this.datosPersonales1.name}} </h4>
             
                 <b-card-text>{{this.datosPersonales1.profession}}</b-card-text>
-                <b-card-text>{{this.text}}</b-card-text>
-                <b-card-text>{{this.datosPersonales1.location}}</b-card-text>
-                <b-card-text>{{this.datosPersonales1.gender}}</b-card-text>
+                <!-- <b-card-text>{{this.text}}</b-card-text> -->
+                <b-card-text>{{this.datosPersonales1.location +" - " +this.datosPersonales1.gender}}</b-card-text>
+                <!-- <b-card-text>{{}}</b-card-text> -->
                 <b-card-text>{{this.datosPersonales1.birthday}}</b-card-text>
-                <b-card-text>{{this.datosPersonales1.link}}</b-card-text>
+                <!-- <b-card-text>{{this.datosPersonales1.link}}</b-card-text> -->
                 <!-- <b-link :href="www.facebook.com + this.datosPersonales1.facebook " >Disabled Link</b-link> -->
           
                 
                 
             </b-card>
     
-          <b-col md="12" sm="12" xs="12" lg="12" v-if="datosPersonales1.experience" style="padding:0px">     
+          <b-col md="12" sm="12" xs="12" lg="12" v-if="datosPersonales1.skills" style="padding:0px">     
             <b-card  img-top  border-variant="light"  header-html="<h3><b>Habilidades</b><h3>" >  
                 <b-card-body  align="left">
-                  <b-row  v-for="dato in datosPersonales1.experience" :key="dato.id"  >
-                      <!-- <b-card-text>Cantidad total: {{this.rpta1.cantidadTotal}}  </b-card-text>  --> 
-                      <b-card-text v-if="dato[0].length===1" >                                    
-                          <b> {{dato}}  </b>
-                      </b-card-text> 
+                  <b-row  v-for="dato in datosPersonales1.skills" :key="dato.id"  >
 
-                      <b-col md="2" sm="2" xs="2" lg="2" v-if="dato[0].length >1">                  
-                        <img  style="max-width:3rem;max-heigth:3rem;"  
-                          :src="dato[3]"/>                     
-                      </b-col>
-
-                      <b-col md="10" sm="8" xs="8" lg="10" v-if="dato[0].length >1" style="padding:10px">
+                      <b-col md="10" sm="8" xs="8" lg="10"  style="padding:10px">
                         <b-row>
                             <b-icon icon="check" font-scale="1" variant="info" />
                             <b-card-text >                                    
-                              {{dato[0]}}   
+                              {{dato}}   
                             </b-card-text> 
                         </b-row>
                       </b-col>
@@ -122,13 +113,7 @@
             </b-card>
           </b-col>
 
-
-
-
-
-
-
-      </b-row>
+      
     </b-col>
     
     <b-col md="8" sm="12" xs="12" lg="8" v-if="datosPersonales1.experience">     
@@ -224,11 +209,32 @@ import axios from 'axios';
             'ene. 2020 - actualidad · 2 años 1 mes',
             'https://www.linkedin.com/company/14812/',
             'https://media-exp1.licdn.com/dms/image/C4D0BAQHkGKI9NHG3xA/company-logo_100_100/0/1625184191659?e=1650499200&v=beta&t=wm20jbzDWdnVngMtuiwtxWtxDcaFxpS6KsywMe5GpjU'],
+            'Practicante',
+            ['LinkedIn · Practicante',
+            'oct. 2021 - actualidad · 1 año',
+            'https://www.linkedin.com/company/1337/',
+            'https://media-exp1.licdn.com/dms/image/C560BAQHaVYd13rRz3A/company-logo_100_100/0/1638831589865?e=1650499200&v=beta&t=tQzbzGcdo5F-3CSaugInYnYzh3KpasaCiObVENXdFmc'],
             'Diseñadora gráfica',
             ['Of. Bienestar Ciencias · TPA',
             'oct. 2021 - actualidad · 3 meses',
+            'https://www.linkedin.com/company/37835/',
+            'https://media-exp1.licdn.com/dms/image/C4E0BAQHNxJdDKSu80g/company-logo_100_100/0/1626692502131?e=1650499200&v=beta&t=s3FCvMQFbx0jCPBNsqH5NX-9K--ULVY9Ce7dD65QNik'],
+            'Analista de datos',
+            ['LinkedIn · Practicante',
+            'oct. 2021 - actualidad · 3 meses',
             'https://www.linkedin.com/company/1337/',
             'https://media-exp1.licdn.com/dms/image/C560BAQHaVYd13rRz3A/company-logo_100_100/0/1638831589865?e=1650499200&v=beta&t=tQzbzGcdo5F-3CSaugInYnYzh3KpasaCiObVENXdFmc'],
+            'Practicante',
+            ['LinkedIn · Practicante',
+            'oct. 2021 - actualidad · 1 año',
+            'https://www.linkedin.com/company/1337/',
+            'https://media-exp1.licdn.com/dms/image/C560BAQHaVYd13rRz3A/company-logo_100_100/0/1638831589865?e=1650499200&v=beta&t=tQzbzGcdo5F-3CSaugInYnYzh3KpasaCiObVENXdFmc'],
+            'Diseñadora gráfica',
+            ['Of. Bienestar Ciencias · TPA',
+            'oct. 2021 - actualidad · 3 meses',
+            'https://www.linkedin.com/company/37835/',
+            'https://media-exp1.licdn.com/dms/image/C4E0BAQHNxJdDKSu80g/company-logo_100_100/0/1626692502131?e=1650499200&v=beta&t=s3FCvMQFbx0jCPBNsqH5NX-9K--ULVY9Ce7dD65QNik'],
+            
             
             ],
           education: {'': ['',
@@ -238,7 +244,7 @@ import axios from 'axios';
             '',
             '',
             '']},
-          skills: ['', '', ''],
+          skills:  ['Analítica de datos', 'Inteligencia empresarial', 'Analítica'],
           interests: ['', ''],
           gender: 'Femenino',
           birthday:'December 15, 1996',
