@@ -11,18 +11,6 @@
       class="d-inline-block"
       @hidden="onHidden">
 
-
-   <!-- FILA TÍTULO -->
-    <!-- <b-row align-h="center">
-      <b-col cols="12">
-        <h1 style="font-family:verdana;color:black;" > Bienvenido al Creador de Perfiles          </h1>
-      </b-col>
-   </b-row>  -->
- 
- 
-
-   
-
   <!-- cards de resultados img-src="https://cdn.pixabay.com/photo/2020/02/15/14/19/network-4851079_960_720.jpg"-->
   <b-card
     overlay    
@@ -81,45 +69,102 @@
       <h1 style="font-family:verdana;color:white; margin-top:20px;margin-bottom:20px; " > Resultados de {{this.datosPersonales1.name}} </h1>
     </div>
     <!-- Card de resultados -->
-    <b-col  md="4" style="padding:0px">
-      <b-card       
-          id="card1"
-          tag="article"
-          style="max-width: 35rem;padding:0px;padding-rigth:10px"
-          class="mb-2"
-        >
-         <img id="fotoPerfil" style="max-width: 30rem;max-heigth: 30rem;"  
-         :src="datosPersonales1.image"      />
-             
-        <h4 style="color:black;padding:15px" >{{this.datosPersonales1.name}} </h4>
-       
-       
-          <!-- <b-card-text>Foto: {{this.datosPersonales1.image}}</b-card-text> -->
-          <b-card-text>{{this.datosPersonales1.profession}}</b-card-text>
-          <b-card-text>{{this.datosPersonales1.location}}</b-card-text>
-          <b-card-text>{{this.datosPersonales1.link}}</b-card-text>
+    <b-col  md="4" sm="12" xs="12" lg="4" v-if=" this.datosPersonales1.name">
+      <b-row>
+            <b-card       
+                id="card1"
+                tag="article"
+                style="max-width: 35rem;padding-rigth:0px"
+                class="mb-2"
+                md="12" sm="12" xs="12" lg="12"
+              >
+              <img  style="max-width: 30rem;max-heigth: 30rem;"  
+              :src="datosPersonales1.image" />
+                  
+                <h4 style="color:black;padding:15px" >{{this.datosPersonales1.name}} </h4>
+            
+                <b-card-text>{{this.datosPersonales1.profession}}</b-card-text>
+                <b-card-text>{{this.text}}</b-card-text>
+                <b-card-text>{{this.datosPersonales1.location}}</b-card-text>
+                <b-card-text>{{this.datosPersonales1.gender}}</b-card-text>
+                <b-card-text>{{this.datosPersonales1.birthday}}</b-card-text>
+                <b-card-text>{{this.datosPersonales1.link}}</b-card-text>
+                <!-- <b-link :href="www.facebook.com + this.datosPersonales1.facebook " >Disabled Link</b-link> -->
           
+                
+                
+            </b-card>
+    
+          <b-col md="12" sm="12" xs="12" lg="12" v-if="datosPersonales1.experience" style="padding:0px">     
+            <b-card  img-top  border-variant="light"  header-html="<h3><b>Habilidades</b><h3>" >  
+                <b-card-body  align="left">
+                  <b-row  v-for="dato in datosPersonales1.experience" :key="dato.id"  >
+                      <!-- <b-card-text>Cantidad total: {{this.rpta1.cantidadTotal}}  </b-card-text>  --> 
+                      <b-card-text v-if="dato[0].length===1" >                                    
+                          <b> {{dato}}  </b>
+                      </b-card-text> 
+
+                      <b-col md="2" sm="2" xs="2" lg="2" v-if="dato[0].length >1">                  
+                        <img  style="max-width:3rem;max-heigth:3rem;"  
+                          :src="dato[3]"/>                     
+                      </b-col>
+
+                      <b-col md="10" sm="8" xs="8" lg="10" v-if="dato[0].length >1" style="padding:10px">
+                        <b-row>
+                            <b-icon icon="check" font-scale="1" variant="info" />
+                            <b-card-text >                                    
+                              {{dato[0]}}   
+                            </b-card-text> 
+                        </b-row>
+                      </b-col>
+                  </b-row>
+                </b-card-body>
+            </b-card>
+          </b-col>
+
+
+
+
+
+
+
+      </b-row>
+    </b-col>
+    
+    <b-col md="8" sm="12" xs="12" lg="8" v-if="datosPersonales1.experience">     
+      <b-card  img-top  border-variant="light"  header-html="<h3><b>Experiencia laboral</b><h3>" >  
+          <b-card-body  align="left">
+            <b-row  v-for="dato in datosPersonales1.experience" :key="dato.id"  >
+                <!-- <b-card-text>Cantidad total: {{this.rpta1.cantidadTotal}}  </b-card-text>  --> 
+                <b-card-text v-if="dato[0].length===1" >                                    
+                    <b> {{dato}}  </b>
+                </b-card-text> 
+
+                <b-col md="2" sm="2" xs="2" lg="2" v-if="dato[0].length >1">                  
+                  <img  style="max-width:3rem;max-heigth:3rem;"  
+                    :src="dato[3]"/>                     
+                </b-col>
+
+                <b-col md="10" sm="8" xs="8" lg="10" v-if="dato[0].length >1" style="padding:10px">
+                  <b-row>
+                      <b-icon icon="check" font-scale="1" variant="info" />
+                      <b-card-text >                                    
+                        {{dato[0]+" - "+dato[1]}}   
+                      </b-card-text> 
+                  </b-row>
+                </b-col>
+            </b-row>
+          </b-card-body>
       </b-card>
     </b-col>
-     <b-card  img-left class="mb-1" style="max-width: 40rem;">
-       <b-row no-gutters>
-      
-      <b-col md="12">
-        <b-card-body title="Experiencia laboral" align="left">
-          <b-card-text>
-            <!-- {{this.datosPersonales1.experience}} -->
-          </b-card-text>
-          <!-- <ul id="example-1">
-            <li v-for="item in this.datosPersonales1.experience">
-              {{ item.mensaje }}
-            </li>
-          </ul> -->
 
-        </b-card-body>
-      </b-col>
-    </b-row>
-       
-    </b-card>
+    
+
+
+
+
+
+
   </b-row>
  </b-container>
 
@@ -127,15 +172,17 @@
 </template>
 
 <script type="type/javascript">
-
+import axios from 'axios';
+    
   export default {
 
     name:'welcome',
     data() {
+      
       return {
         busy: false,
         timeout: null,
-        text: '',
+        
         datosL:{
           name:"Johana Beatriz Diaz Ponte",
           edad:"25",
@@ -172,11 +219,18 @@
           profession: 'Practicante en Belcorp',
           location: 'Perú',
           link: 'https://www.linkedin.com/in/johana-beatriz-diaz-ponte/overlay/contact-info/',
-          experience: {'Practicante de informática': 
+          experience: ['Practicante de informática',
             ['Belcorp · Contrato de prácticas',
             'ene. 2020 - actualidad · 2 años 1 mes',
             'https://www.linkedin.com/company/14812/',
-            'https://media-exp1.licdn.com/dms/image/C4D0BAQHkGKI9NHG3xA/company-logo_100_100/0/1625184191659?e=1650499200&v=beta&t=wm20jbzDWdnVngMtuiwtxWtxDcaFxpS6KsywMe5GpjU']},
+            'https://media-exp1.licdn.com/dms/image/C4D0BAQHkGKI9NHG3xA/company-logo_100_100/0/1625184191659?e=1650499200&v=beta&t=wm20jbzDWdnVngMtuiwtxWtxDcaFxpS6KsywMe5GpjU'],
+            'Diseñadora gráfica',
+            ['Of. Bienestar Ciencias · TPA',
+            'oct. 2021 - actualidad · 3 meses',
+            'https://www.linkedin.com/company/1337/',
+            'https://media-exp1.licdn.com/dms/image/C560BAQHaVYd13rRz3A/company-logo_100_100/0/1638831589865?e=1650499200&v=beta&t=tQzbzGcdo5F-3CSaugInYnYzh3KpasaCiObVENXdFmc'],
+            
+            ],
           education: {'': ['',
             '',
             '']},
@@ -186,21 +240,19 @@
             '']},
           skills: ['', '', ''],
           interests: ['', ''],
-          gender: '',
-          facebook: '',
+          gender: 'Femenino',
+          birthday:'December 15, 1996',
+          facebook: '/johana.diazponte',
           relationship: {'to': '',
             type: '',
             since: ''}
         },
         cards:false, //condicional que activa los resultados en cards
         // expe:this.datosPersonales1.experience,
-        src:'https://st.depositphotos.com/2290789/3667/i/600/depositphotos_36675429-stock-photo-king-lion-aslan.jpg'
-
-
-
-
-
-
+        src:'https://st.depositphotos.com/2290789/3667/i/600/depositphotos_36675429-stock-photo-king-lion-aslan.jpg',
+        conexion:'https://perfiles-backend.herokuapp.com/',
+        rpta1:{'cantidadTotal':'0', 'cantidadAnalisis':'0'},
+        text: "",
       }
 
 
@@ -211,41 +263,65 @@
     },
     methods: {
       clearTimeout() {
-        if (this.timeout) {
+         this.leerDatosPersonales()
+        if (this.timeout  ) {
           clearTimeout(this.timeout)
           this.timeout = null
         }
       },
       setTimeout(callback) {
         this.clearTimeout()
+        var time=1000
+        // if(this.rpta1.cantidadTotal!=0) time=0;
         this.timeout = setTimeout(() => {
-          this.clearTimeout()
+          this.leerDatosPersonales()
+          if(this.rpta1.cantidadTotal!=0 ){
+              this.clearTimeout()
+          }
+
           callback()
-        }, 1000)
+        }, time)
         // document.write("<div><a id='card1'/>jeje</div>");
       },
       onHidden() {
         // Return focus to the button once hidden
         this.$refs.button.focus()
         this.cards = true
-        
-        // document.getElementById('fotoPerfil').src= this.datosPersonales1.image
-        
+                
       },
       onClick() {
         this.busy = true
         // Simulate an async request
         this.setTimeout(() => {
-          this.busy = false          
+          this.busy = false 
+           this.leerDatosPersonales()         
         })
-        
+        // this.leerDatosPersonales()
         
         
       },
 
       // funciones del cargando
-      mostrarDatos(){
-       
+      leerDatosPersonales(){
+        /*
+       axios.get(this.conexion+'info/?fbclid=IwAR0Nw9wXH_O5qYNGJen9w_oqTedPHExZvTPnG-d_wbILiysz1xAmXkirnzU'
+       //,{
+        // params:{
+        //   perpage:5
+        // }
+        //}
+      ).then(response =>{
+        // console.log(this.rpta1.cantidadTotal)
+        // console.log(response.data)
+        // this.rpta1=response.data
+        // console.log(this.rpta1.cantidadTotal)
+
+      }).catch( e => {
+        console.log(e)
+      })
+      */
+      
+      
       }
     }
   }
