@@ -58,8 +58,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: black; /*  #color letra */
-  margin-top: 60px;
-  background-color: white;/*  #color fondo */
+  margin: 0px;
+  background-color: rgb(234, 245, 247);/*  #color fondo */
 }
 
 </style>
