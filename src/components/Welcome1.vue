@@ -1,7 +1,7 @@
 <template>
 
   <b-container  fluid >
-  <b-row>
+  <b-row v-if="cards == false ">
   
 <!-- Cargando -->
    <b-overlay :show="busy"
@@ -25,21 +25,21 @@
 
   <!-- cards de resultados img-src="https://cdn.pixabay.com/photo/2020/02/15/14/19/network-4851079_960_720.jpg"-->
   <b-card
-    overlay
-    
+    overlay    
     img-src="https://www.xtrafondos.com/wallpapers/colores-en-remolino-abstracto-5836.jpg"
     img-alt="Card Image"
     text-variant="black"
     title=""
     sub-title=""
+   
   >
     <div class="col-lg-12 ">
       <!-- titulos -->
-      <h1 style="font-family:verdana;color:white; margin-top:20px;margin-bottom:20px " > Bienvenido al Creador de Perfiles          </h1>
+      <h1 style="font-family:verdana;color:white; margin-top:20px; " > Bienvenido al Creador de Perfiles          </h1>
     </div>
 
     
-      <div  style="margin-top:20px;  ">
+      <div  style="margin-top:15%;  ">
       <!-- <div  > -->
         <!-- Input buscador -->
             <b-input-group size="lg" class="mb-3" >
@@ -74,7 +74,12 @@
   </b-overlay> 
 
   </b-row>
-  <b-row>
+  <!-- RESULTADOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS -->
+  <b-row v-if="cards == true ">
+    <div class="col-lg-12 ">
+      <!-- titulos -->
+      <h1 style="font-family:verdana;color:white; margin-top:20px;margin-bottom:20px; " > Resultados de {{this.datosPersonales1.name}} </h1>
+    </div>
     <!-- Card de resultados -->
     <b-col  md="4" style="padding:0px">
       <b-card       
@@ -83,9 +88,9 @@
           style="max-width: 35rem;padding:0px;padding-rigth:10px"
           class="mb-2"
         >
-        <!-- <img id= "{{this.datosPersonales1.image}}"></img> -->
-    
-        <!-- <b-img src='this.datosPersonales1.image' ></b-img> -->
+         <img id="fotoPerfil" style="max-width: 30rem;max-heigth: 30rem;"  
+         :src="datosPersonales1.image"      />
+             
         <h4 style="color:black;padding:15px" >{{this.datosPersonales1.name}} </h4>
        
        
@@ -102,7 +107,7 @@
       <b-col md="12">
         <b-card-body title="Experiencia laboral" align="left">
           <b-card-text>
-            {{this.datosPersonales1.experience[0]}}
+            <!-- {{this.datosPersonales1.experience}} -->
           </b-card-text>
           <!-- <ul id="example-1">
             <li v-for="item in this.datosPersonales1.experience">
@@ -121,11 +126,8 @@
 
 </template>
 
-<script>
- 
-  var myImage = new Image(100, 200);
-  myImage.src = 'https://media-exp1.licdn.com/dms/image/C4E03AQHlEFg3xDa9sg/profile-displayphoto-shrink_400_400/0/1626734513662?e=1648080000&v=beta&t=Jw6PBZIk7vA4mlFA1bSWI1Ho7ja5Zj1sDyNP-9wclwE';
-  console.log(myImage);
+<script type="type/javascript">
+
   export default {
 
     name:'welcome',
@@ -189,9 +191,10 @@
           relationship: {'to': '',
             type: '',
             since: ''}
-        }
-
-
+        },
+        cards:false, //condicional que activa los resultados en cards
+        // expe:this.datosPersonales1.experience,
+        src:'https://st.depositphotos.com/2290789/3667/i/600/depositphotos_36675429-stock-photo-king-lion-aslan.jpg'
 
 
 
@@ -218,30 +221,31 @@
         this.timeout = setTimeout(() => {
           this.clearTimeout()
           callback()
-        }, 5000)
+        }, 1000)
         // document.write("<div><a id='card1'/>jeje</div>");
       },
       onHidden() {
         // Return focus to the button once hidden
         this.$refs.button.focus()
+        this.cards = true
+        
+        // document.getElementById('fotoPerfil').src= this.datosPersonales1.image
+        
       },
       onClick() {
         this.busy = true
         // Simulate an async request
         this.setTimeout(() => {
-          this.busy = false
-          document.write("<div><a id='card1'/>jeje</div>");
+          this.busy = false          
         })
+        
+        
         
       },
 
       // funciones del cargando
       mostrarDatos(){
-        const datosL ={
-          nombre:"Johana Beatriz Diaz Ponte",
-          edad:"25",
-          trabajo:"Practicante Belcorp"
-        }
+       
       }
     }
   }

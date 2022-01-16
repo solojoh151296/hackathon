@@ -59,7 +59,8 @@ export default {
   text-align: center;
   color: black; /*  #color letra */
   margin: 0px;
-  background-color: rgb(234, 245, 247);/*  #color fondo */
+  /* background-color: rgb(234, 245, 247); #color fondo */
+  background-color: black;/*  #color fondo */
 }
 
 </style>
