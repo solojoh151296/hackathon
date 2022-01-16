@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <XD/>
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
